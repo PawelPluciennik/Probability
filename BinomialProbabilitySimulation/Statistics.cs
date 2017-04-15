@@ -56,7 +56,52 @@ namespace Prawdopodobienstwo_
             return Score;
         }
 
+        
+
+        public static double Mean(int[] tab)
+        {
+            int sum = 0;
+            int N= 0;
+            for (int i = 0; i < tab.Length; i++)
+            {
+                sum += tab[i] * i;
+                N += tab[i];
+            }
+
+            return 1.0 * sum / N;
+        }
+
+        public static double MeanTheory(int trialsInSeries, double trialProbability)
+        {
+            return 1.0*trialsInSeries * trialProbability;
+        }
+
+        public static double StandardDeviationTheory(int trialsInSeries, double trialProbability)
+        {
+            return Math.Sqrt(1.0* trialsInSeries * trialProbability*(1-trialProbability));
+        }
+
+        public static double RelativeError(double exactValue, double theoreticalValue)
+        {
+            return (exactValue - theoreticalValue) / exactValue*100;
+        }
 
 
+        public static double StandardDeviation(int[] tab)
+        {
+            double mean = Mean(tab);
+            double sum = 0;
+            int N = 0;
+            for (int i = 0; i < tab.Length; i++)
+            {
+                sum += ((double)i - mean) * ((double)i - mean) * (double)tab[i];
+                N += tab[i];
+            }
+
+            double sigma = Math.Sqrt(sum / N);
+
+            return sigma;
+
+        }
     }
 }
