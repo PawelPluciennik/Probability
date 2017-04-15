@@ -11,12 +11,17 @@ namespace ProbabilityTests
     {
         static void Main(string[] args)
         {
-            for (int i = 0; i < 20; i++)
+
+            CoinSeriesProbability probability = new CoinSeriesProbability(10, 10000);
+
+            probability.Simulate();
+
+            for (int i = 0; i < probability.CoinSeriesProbabilityTab.Length; i++)
             {
-                Console.WriteLine(Coin.Toss().ToString());
+                Console.WriteLine(String.Format("Heads in series {0} - count: {1}", i,probability.GetProbability()[i]));
             }
-        
-            
+
+            Console.ReadKey();
 
             Console.ReadKey();
         }

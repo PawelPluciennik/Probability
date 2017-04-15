@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prawdopodobienstwo_
 {
-    class Statistics
+    public class Statistics
     {
 
 
